@@ -14,5 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <libft.h>
+# include <unistd.h>
+
+void	parse_args(char *argv[]);
+void	exit_error(void);
 
 #endif

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 17:37:55 by jamrabhi          #+#    #+#             */
-/*   Updated: 2022/03/30 17:37:58 by jamrabhi         ###   ########.fr       */
+/*   Created: 2022/05/08 04:32:15 by jamrabhi          #+#    #+#             */
+/*   Updated: 2022/05/08 04:32:19 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+// A SUPPRIMER !
+#include <stdio.h>
 
-int	main(int argc, char *argv[])
+void	parse_args(char *argv[])
 {
-	if (argc == 1)
-		exit_error();
-	parse_args(argv);
-	return (0);
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		i++;
+	}
 }

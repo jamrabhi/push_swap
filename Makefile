@@ -16,11 +16,11 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = src/main.c
+SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c
 
 OBJ = $(SRC:.c=.o)
 
-INCDIR = include
+INCDIR = include/
 
 LIBDIR = libft/
 
@@ -40,7 +40,7 @@ $(NAME) : $(OBJ)
 	@echo "DONE"
 
 .c.o:
-	@${CC} ${CFLAGS} -I $(INCDIR) -I$(LIBDIR) -c $< -o $@
+	@${CC} ${CFLAGS} -I $(INCDIR) -I $(LIBDIR) -c $< -o $@
 
 clean:
 	@echo "Deleting libft objects files ..."

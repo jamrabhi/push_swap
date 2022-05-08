@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 17:37:55 by jamrabhi          #+#    #+#             */
-/*   Updated: 2022/03/30 17:37:58 by jamrabhi         ###   ########.fr       */
+/*   Created: 2022/05/08 04:40:33 by jamrabhi          #+#    #+#             */
+/*   Updated: 2022/05/08 04:40:35 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int argc, char *argv[])
+void	exit_error(void)
 {
-	if (argc == 1)
-		exit_error();
-	parse_args(argv);
-	return (0);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }
