@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 22:04:28 by jamrabhi          #+#    #+#             */
-/*   Updated: 2021/06/05 19:52:43 by jamrabhi         ###   ########.fr       */
+/*   Created: 2022/05/08 22:00:11 by jamrabhi          #+#    #+#             */
+/*   Updated: 2022/05/08 22:00:13 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-static size_t	ft_count_words(const char *s, char c)
+static size_t	ft_count_words(char *s)
 {
 	size_t	i;
 	size_t	j;
@@ -21,19 +21,21 @@ static size_t	ft_count_words(const char *s, char c)
 	j = 0;
 	while (s && s[i])
 	{
-		if (s[i] == c)
+		// if (s[0] == 0)
+		// 	exit_error();
+		if (ft_isspace(s[i]))
 			i++;
 		else
 		{
 			j++;
-			while (s[i] != c && s[i])
+			while (!ft_isspace(s[i]) && s[i])
 				i++;
 		}
 	}
 	return (j);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_whitespaces(char *s)
 {
 	size_t	i;
 	char	**rt;
@@ -42,15 +44,15 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	index = 0;
-	rt = (char **)malloc(sizeof(*rt) * (ft_count_words(s, c) + 1));
+	rt = (char **)malloc(sizeof(*rt) * (ft_count_words(s) + 1));
 	if (!s || !rt)
 		return (NULL);
 	while (s[i])
 	{
-		if (s[i] != c)
+		if (!ft_isspace(s[i]))
 		{
 			start = i;
-			while (s[i] != c && s[i])
+			while (!ft_isspace(s[i]) && s[i])
 				i++;
 			rt[index++] = ft_substr(s, start, (i - start));
 		}

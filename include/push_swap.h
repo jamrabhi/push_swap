@@ -18,5 +18,6 @@
 
 void	parse_args(char *argv[]);
 void	exit_error(void);
-
+void	free_array(char **str);
+char	**ft_split_whitespaces(char *s);
 #endif

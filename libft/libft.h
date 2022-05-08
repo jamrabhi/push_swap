@@ -54,6 +54,8 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_strcmp(const char *s1, const char *s2);
+char				**ft_split_str(char const *s, const char *delimiters);
+int					ft_isspace(char c);
 
 typedef struct s_list
 {
@@ -71,7 +73,5 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-
-char				**ft_split_str(char const *s, const char *delimiters);
 
 #endif

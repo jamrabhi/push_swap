@@ -16,7 +16,8 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c
+SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c \
+		src/parsing/ft_split_whitespaces.c
 
 OBJ = $(SRC:.c=.o)
 
