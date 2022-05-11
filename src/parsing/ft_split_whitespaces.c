@@ -19,10 +19,10 @@ static size_t	ft_count_words(char *s)
 
 	i = 0;
 	j = 0;
+	if (!s || !s[0])
+		exit_error();
 	while (s && s[i])
 	{
-		// if (s[0] == 0)
-		// 	exit_error();
 		if (ft_isspace(s[i]))
 			i++;
 		else

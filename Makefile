@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
 SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c \
 		src/parsing/ft_split_whitespaces.c
@@ -33,7 +33,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo "Compiling libft ..."
-	@cd $(LIBDIR) && make
+	@cd $(LIBDIR) && make bonus
 	@echo "DONE \n"
 
 	@echo "Compiling push_swap ..."

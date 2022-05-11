@@ -16,6 +16,13 @@
 # include <libft.h>
 # include <unistd.h>
 
+typedef struct s_stack
+{
+	int	nb;
+	struct s_stack	*element;
+}				t_stack;
+
+
 void	parse_args(char *argv[]);
 void	exit_error(void);
 void	free_array(char **str);

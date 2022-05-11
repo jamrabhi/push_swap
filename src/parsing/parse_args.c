@@ -67,8 +67,8 @@ void	parse_args(char *argv[])
 	{
 		tmp = ft_split_whitespaces(argv[i]);
 		check_digit(tmp);
-		printf("argv[%d]\n", i);
-		show_array(tmp);
+		// printf("argv[%d]\n", i);
+		// show_array(tmp);
 		free_array(tmp);
 		i++;
 	}
