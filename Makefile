@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -g #-Wall -Wextra -Werror
 
 SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c \
 		src/parsing/ft_split_whitespaces.c
