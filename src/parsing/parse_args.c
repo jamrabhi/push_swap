@@ -27,6 +27,30 @@ void	show_array(char **str)
 	printf("\n");
 }
 
+void print_list_elt(void *content) {
+	printf("%d\n", *(int*)content);
+}
+
+void	into_stack(char **str)
+{
+	t_list	*first_element;
+	t_list	**stack_a;
+	int		i;
+	int		tmp;
+
+	i = 1;
+	tmp = ft_atoi(str[0]);
+	first_element = ft_lstnew(&tmp);
+	stack_a = &first_element;
+	while (str[i])
+	{
+		tmp = ft_atoi(str[i]);
+		ft_lstadd_back(stack_a, ft_lstnew(&tmp));
+		i++;
+	}
+	ft_lstiter(first_element, &print_list_elt);
+}
+
 void	check_digit(char **str)
 {
 	int	i;
@@ -52,24 +76,26 @@ void	check_digit(char **str)
 			}
 			j++;
 		}
+		// into_stack(str[i]);
 		i++;
 	}
 }
 
-void	parse_args(char *argv[])
+void	parse_args(char *argv[], t_stack stack_a)
 {
 	int		i;
-	char	**tmp;
+	char	**args;
 
 	i = 1;
-	tmp = NULL;
+	args = NULL;
 	while (argv[i])
 	{
-		tmp = ft_split_whitespaces(argv[i]);
-		check_digit(tmp);
+		args = ft_split_whitespaces(argv[i]);
+		check_digit(args);
 		// printf("argv[%d]\n", i);
-		// show_array(tmp);
-		free_array(tmp);
+		// show_array(args);
+		// free_array(args);
+		show_array(args);
 		i++;
 	}
 }
