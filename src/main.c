@@ -13,29 +13,19 @@
 #include <push_swap.h>
 #include <stdio.h>
 
-void print_list_elt(void *content) {
-	printf("%d\n", content);
+void	print_list_elt(int nb)
+{
+	printf("%d\n", nb);
 }
-
-
 
 int	main(int argc, char *argv[])
 {
-	t_list *stack_a;
-	// t_list	**stack_a = &first_element;
-	// t_list *second;
+	t_stack	*stack_a;
 
 	if (argc == 1)
 		exit_error();
-	// int p = 42;
-	// first_element = ft_lstnew(&p);
-	// second = ft_lstnew((int *)212);
-	// stack_a = &first_element;
-	// ft_lstadd_back(&first_element, second);
-	// ft_lstadd_back(stack_a, ft_lstnew((int *)98	));
-	// free(first_element);
-	// free(second);
-	stack_a = parse_args(argv, &stack_a);
-	ft_lstiter(stack_a, &print_list_elt);
+	stack_a = parse_args(argv, stack_a);
+	ft_stackiter(stack_a, &print_list_elt);
+	free_stack(&stack_a);
 	return (0);
 }

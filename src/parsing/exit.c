@@ -18,6 +18,24 @@ void	exit_error(void)
 	exit(EXIT_FAILURE);
 }
 
+void	free_stack(t_stack **astack)
+{
+	t_stack	*stack;
+	t_stack	*tmp;
+
+	stack = *astack;
+	while (stack)
+	{
+		if (stack->next)
+			tmp = stack->next;
+		else
+			tmp = NULL;
+		free(stack);
+		stack = tmp;
+	}
+	*astack = NULL;
+}
+
 void	free_array(char **str)
 {
 	int	i;

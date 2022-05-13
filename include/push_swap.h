@@ -16,8 +16,21 @@
 # include <libft.h>
 # include <unistd.h>
 
-t_list	*parse_args(char *argv[], t_list *stack);
+typedef struct s_stack
+{
+	int				nb;
+	struct s_stack	*next;
+}				t_stack;
+
+t_stack	*parse_args(char *argv[], t_stack *stack);
 void	exit_error(void);
 void	free_array(char **str);
 char	**ft_split_whitespaces(char *s);
+t_stack	*ft_stacknew(int nb);
+void	ft_stackadd_front(t_stack **astack, t_stack *new);
+void	ft_stackadd_back(t_stack **astack, t_stack *new);
+void	ft_stackiter(t_stack *stack, void (*f)(int));
+void	ft_stackdelone(t_stack *stack, void (*del)(int));
+void	free_stack(t_stack **astack);
+
 #endif
