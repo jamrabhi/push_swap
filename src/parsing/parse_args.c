@@ -27,34 +27,13 @@ void	show_array(char **str)
 	printf("\n");
 }
 
-void print_list_elt(void *content) {
-	printf("%d\n", *(int*)content);
-}
 
-void	into_stack(char **str)
-{
-	t_list	*first_element;
-	t_list	**stack_a;
-	int		i;
-	int		tmp;
-
-	i = 1;
-	tmp = ft_atoi(str[0]);
-	first_element = ft_lstnew(&tmp);
-	stack_a = &first_element;
-	while (str[i])
-	{
-		tmp = ft_atoi(str[i]);
-		ft_lstadd_back(stack_a, ft_lstnew(&tmp));
-		i++;
-	}
-	ft_lstiter(first_element, &print_list_elt);
-}
 
 void	check_digit(char **str)
 {
 	int	i;
 	int	j;
+
 
 	i = 0;
 	if (!str || !str[0])
@@ -76,26 +55,69 @@ void	check_digit(char **str)
 			}
 			j++;
 		}
-		// into_stack(str[i]);
 		i++;
 	}
 }
 
-void	parse_args(char *argv[], t_stack stack_a)
+// void print_list_elt(void *content) {
+// 	printf("%d\n", content);
+// }
+
+t_list	*into_stack(char **str, int arg, t_list *stack_a)
+{
+	int		i;
+	int		tmp;
+	t_list	*new_link;
+
+	i = 0;
+	while (str[i])
+	{
+		tmp = ft_atoi(str[i]);
+		if (i == 0 && arg == 1)
+		{
+			stack_a = ft_lstnew(tmp);
+		}
+		else
+		{
+			new_link = ft_lstnew((int *)tmp);
+			ft_lstadd_back(&stack_a, new_link);
+		}
+		// ft_lstadd_back(&stack_a, ft_lstnew(&tmp));
+		i++;
+	}
+	// ft_lstiter(stack_a, &print_list_elt);
+	return (stack_a);
+}
+
+t_list	*parse_args(char *argv[], t_list *stack_a)
 {
 	int		i;
 	char	**args;
+	t_list	*new_link;
+	int		tmp;
 
 	i = 1;
 	args = NULL;
+	// stack_a = NULL;
 	while (argv[i])
 	{
 		args = ft_split_whitespaces(argv[i]);
 		check_digit(args);
+		tmp = ft_atoi(argv[i]);
+		stack_a = into_stack(args, i, stack_a);
+		// if (i == 1)
+		// 	stack_a = ft_lstnew(&tmp);
+		// else
+		// {
+		// 	new_link = ft_lstnew(&tmp);
+		// 	ft_lstadd_front(&stack_a, new_link);
+		// }
 		// printf("argv[%d]\n", i);
 		// show_array(args);
 		// free_array(args);
-		show_array(args);
 		i++;
 	}
+	return (stack_a);
+	// printf("STaCK = %d\n", *(int *)stack_a->content);
+	// ft_lstiter(stack_a, &print_list_elt);
 }

@@ -13,13 +13,15 @@
 #include <push_swap.h>
 #include <stdio.h>
 
-// void print_list_elt(void *content) {
-// 	printf("%d\n", *(int*)content);
-// }
+void print_list_elt(void *content) {
+	printf("%d\n", content);
+}
+
+
 
 int	main(int argc, char *argv[])
 {
-	t_stack stack_a;
+	t_list *stack_a;
 	// t_list	**stack_a = &first_element;
 	// t_list *second;
 
@@ -31,9 +33,9 @@ int	main(int argc, char *argv[])
 	// stack_a = &first_element;
 	// ft_lstadd_back(&first_element, second);
 	// ft_lstadd_back(stack_a, ft_lstnew((int *)98	));
-	// ft_lstiter(first_element, &print_list_elt);
 	// free(first_element);
 	// free(second);
-	parse_args(argv, stack_a);
+	stack_a = parse_args(argv, &stack_a);
+	ft_lstiter(stack_a, &print_list_elt);
 	return (0);
 }
