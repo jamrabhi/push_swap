@@ -45,12 +45,19 @@ void	ft_stackdelone(t_stack *stack);
 void	free_stack(t_stack **astack);
 void	exit_free(t_data *data);
 
-void	sa(t_data *data);
-void	sb(t_data *data);
+void	sa(t_data *data, int i);
+void	sb(t_data *data, int i);
 void	ss(t_data *data);
 
 void	pa(t_data *data);
 void	pb(t_data *data);
 
+void	ra(t_data *data, int i);
+void	rb(t_data *data, int i);
+void	rr(t_data *data);
+
+void	rra(t_data *data, int i);
+void	rrb(t_data *data, int i);
+void	rrr(t_data *data);
 
 #endif

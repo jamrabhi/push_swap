@@ -29,7 +29,7 @@ void	pa(t_data *data)
 		stack_a = ft_stacknew(stack_b->nb);
 		if (!stack_a)
 			exit_free(data);
-		ft_stackadd_back(&data->top_stack_a, stack_a);
+		ft_stackadd_front(&data->top_stack_a, stack_a);
 		free(stack_b);
 		data->top_stack_b = tmp;
 		data->stack_a_size++;
@@ -54,7 +54,7 @@ void	pb(t_data *data)
 		stack_b = ft_stacknew(stack_a->nb);
 		if (!stack_b)
 			exit_free(data);
-		ft_stackadd_back(&data->top_stack_b, stack_b);
+		ft_stackadd_front(&data->top_stack_b, stack_b);
 		free(stack_a);
 		data->top_stack_a = tmp;
 		data->stack_a_size--;

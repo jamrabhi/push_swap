@@ -23,12 +23,14 @@ void	print_stack_a(t_data *data)
 {
 	printf("STACK A :\n---------\n");
 	ft_stackiter(data->top_stack_a, &print_list_elt);
+	printf("\n");
 }
 
 void	print_stack_b(t_data *data)
 {
 	printf("STACK B :\n---------\n");
 	ft_stackiter(data->top_stack_b, &print_list_elt);
+	printf("\n");
 }
 
 int	main(int argc, char *argv[])
@@ -43,10 +45,14 @@ int	main(int argc, char *argv[])
 		exit_free(&data);
 	print_stack_a(&data);
 	print_stack_b(&data);
-	pb(&data);
+	rra(&data, 1);
 	print_stack_a(&data);
 	print_stack_b(&data);
-	pa(&data);
+	rb(&data, 1);
+	print_stack_a(&data);
+	print_stack_b(&data);
+	ra(&data, 1);
+	rb(&data, 1);
 	print_stack_a(&data);
 	print_stack_b(&data);
 	free_stack(&data.top_stack_a);
