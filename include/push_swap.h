@@ -22,7 +22,14 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-t_stack	*parse_args(char *argv[], t_stack *stack);
+typedef struct s_data
+{
+	t_stack	*top_stack_a;
+	int		stack_a_size;
+}				t_data;
+
+
+void	parse_args(char *argv[], t_data *data);
 void	exit_error(void);
 void	free_array(char **str);
 char	**ft_split_whitespaces(char *s);
@@ -32,5 +39,7 @@ void	ft_stackadd_back(t_stack **astack, t_stack *new);
 void	ft_stackiter(t_stack *stack, void (*f)(int));
 void	ft_stackdelone(t_stack *stack, void (*del)(int));
 void	free_stack(t_stack **astack);
+void	exit_free(t_data *data);
+
 
 #endif

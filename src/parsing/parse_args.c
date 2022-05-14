@@ -27,17 +27,14 @@ void	show_array(char **str)
 	printf("\n");
 }
 
-void	check_digit(char **str, t_stack *stack_a)
+int	check_digit(char **str, t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	if (!str || !str[0])
-	{
-		free_array(str);
-		exit_error();
-	}
+		return (EXIT_FAILURE);
 	while (str[i])
 	{
 		j = 0;
@@ -45,26 +42,20 @@ void	check_digit(char **str, t_stack *stack_a)
 		{
 			j++;
 			if (!str[i][j])
-			{
-				free_array(str);
-				free_stack(&stack_a);
-				exit_error();
-			}
+				return (EXIT_FAILURE);
 		}
 		while (str[i][j])
 		{
 			if (!ft_isdigit(str[i][j]))
-			{
-				free_array(str);
-				exit_error();
-			}
+				return (EXIT_FAILURE);
 			j++;
 		}
 		i++;
 	}
+	return (EXIT_SUCCESS);
 }
 
-t_stack	*into_stack(char **str, int arg, t_stack *stack_a)
+void	into_stack(char **str, int arg, t_data *data)
 {
 	int		i;
 	int		tmp;
@@ -73,20 +64,16 @@ t_stack	*into_stack(char **str, int arg, t_stack *stack_a)
 	i = 0;
 	while (str[i])
 	{
-		tmp = ft_atoi(str[i]);
-		if (i == 0 && arg == 1)
-			stack_a = ft_stacknew(tmp);
-		else
-		{
-			new_link = ft_stacknew(tmp);
-			ft_stackadd_back(&stack_a, new_link);
-		}
+		new_link = ft_stacknew(ft_atoi(str[i]));
+		if (!new_link)
+			exit_free(data);
+		ft_stackadd_back(&data->top_stack_a, new_link);
+		data->stack_a_size++;
 		i++;
 	}
-	return (stack_a);
 }
 
-t_stack	*parse_args(char *argv[], t_stack *stack_a)
+void	parse_args(char *argv[], t_data *data)
 {
 	int		i;
 	char	**args;
@@ -95,10 +82,13 @@ t_stack	*parse_args(char *argv[], t_stack *stack_a)
 	while (argv[i])
 	{
 		args = ft_split_whitespaces(argv[i]);
-		check_digit(args, stack_a);
-		stack_a = into_stack(args, i, stack_a);
-		i++;
+		if (check_digit(args, data) == EXIT_FAILURE)
+		{
+			free_array(args);
+			exit_free(data);
+		}
+		into_stack(args, i, data);
 		free_array(args);
+		i++;
 	}
-	return (stack_a);
 }

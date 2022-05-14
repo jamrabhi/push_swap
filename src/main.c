@@ -20,15 +20,13 @@ void	print_list_elt(int nb)
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*stack_a;
+	t_data	data;
 
-	stack_a = NULL;
-	// ft_bzero(stack_a, sizeof(*stack_a));
-	// printf("st = %d\n", stack_a->next);
 	if (argc == 1)
-		exit_error();
-	stack_a = parse_args(argv, stack_a);
-	ft_stackiter(stack_a, &print_list_elt);
-	free_stack(&stack_a);
+		return (0);
+	ft_bzero(&data, sizeof(data));
+	parse_args(argv, &data);
+	ft_stackiter(data.top_stack_a, &print_list_elt);
+	free_stack(&data.top_stack_a);
 	return (0);
 }

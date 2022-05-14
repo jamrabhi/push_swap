@@ -12,6 +12,12 @@
 
 #include <push_swap.h>
 
+void	exit_free(t_data *data)
+{
+	free_stack(&data->top_stack_a);
+	exit_error();
+}
+
 void	exit_error(void)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
