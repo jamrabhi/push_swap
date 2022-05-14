@@ -33,6 +33,7 @@ int	check_digit(char **str, t_data *data)
 	int	j;
 
 	i = 0;
+	(void)data;
 	if (!str || !str[0])
 		return (EXIT_FAILURE);
 	while (str[i])
@@ -55,13 +56,13 @@ int	check_digit(char **str, t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-void	into_stack(char **str, int arg, t_data *data)
+void	into_stack(char **str, t_data *data)
 {
 	int		i;
-	int		tmp;
 	t_stack	*new_link;
 
 	i = 0;
+	(void)data;
 	while (str[i])
 	{
 		new_link = ft_stacknew(ft_atoi(str[i]));
@@ -87,7 +88,7 @@ void	parse_args(char *argv[], t_data *data)
 			free_array(args);
 			exit_free(data);
 		}
-		into_stack(args, i, data);
+		into_stack(args, data);
 		free_array(args);
 		i++;
 	}

@@ -12,6 +12,7 @@
 
 #include <push_swap.h>
 #include <stdio.h>
+#include <limits.h>
 
 void	print_list_elt(int nb)
 {
@@ -26,6 +27,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	ft_bzero(&data, sizeof(data));
 	parse_args(argv, &data);
+	if (data.stack_a_size < 2)
+		exit_free(&data);
 	ft_stackiter(data.top_stack_a, &print_list_elt);
 	free_stack(&data.top_stack_a);
 	return (0);
