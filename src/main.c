@@ -22,6 +22,9 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 
+	stack_a = NULL;
+	// ft_bzero(stack_a, sizeof(*stack_a));
+	// printf("st = %d\n", stack_a->next);
 	if (argc == 1)
 		exit_error();
 	stack_a = parse_args(argv, stack_a);

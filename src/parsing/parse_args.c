@@ -27,7 +27,7 @@ void	show_array(char **str)
 	printf("\n");
 }
 
-void	check_digit(char **str)
+void	check_digit(char **str, t_stack *stack_a)
 {
 	int	i;
 	int	j;
@@ -42,7 +42,15 @@ void	check_digit(char **str)
 	{
 		j = 0;
 		if (str[i][j] == '-' || str[i][j] == '+')
+		{
 			j++;
+			if (!str[i][j])
+			{
+				free_array(str);
+				free_stack(&stack_a);
+				exit_error();
+			}
+		}
 		while (str[i][j])
 		{
 			if (!ft_isdigit(str[i][j]))
@@ -87,7 +95,7 @@ t_stack	*parse_args(char *argv[], t_stack *stack_a)
 	while (argv[i])
 	{
 		args = ft_split_whitespaces(argv[i]);
-		check_digit(args);
+		check_digit(args, stack_a);
 		stack_a = into_stack(args, i, stack_a);
 		i++;
 		free_array(args);
