@@ -56,6 +56,7 @@ void				ft_putnbr_fd(int n, int fd);
 int					ft_strcmp(const char *s1, const char *s2);
 char				**ft_split_str(char const *s, const char *delimiters);
 int					ft_isspace(char c);
+long				ft_atol(const char *str);
 
 typedef struct s_list
 {

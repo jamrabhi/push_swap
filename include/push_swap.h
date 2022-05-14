@@ -16,6 +16,9 @@
 # include <libft.h>
 # include <unistd.h>
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
 typedef struct s_stack
 {
 	int				nb;
@@ -26,8 +29,9 @@ typedef struct s_data
 {
 	t_stack	*top_stack_a;
 	int		stack_a_size;
+	t_stack	*top_stack_b;
+	int		stack_b_size;
 }				t_data;
-
 
 void	parse_args(char *argv[], t_data *data);
 void	exit_error(void);
@@ -40,6 +44,5 @@ void	ft_stackiter(t_stack *stack, void (*f)(int));
 void	ft_stackdelone(t_stack *stack, void (*del)(int));
 void	free_stack(t_stack **astack);
 void	exit_free(t_data *data);
-
 
 #endif

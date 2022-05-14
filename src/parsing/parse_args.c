@@ -27,6 +27,28 @@ void	show_array(char **str)
 	printf("\n");
 }
 
+int	check_duplicate(t_stack *stack_a)
+{
+	int		i;
+	int		j;
+	t_stack	*stack_tmp;
+
+	while (stack_a)
+	{
+		i = stack_a->nb;
+		stack_tmp = stack_a;
+		while (stack_tmp->next)
+		{
+			stack_tmp = stack_tmp->next;
+			j = stack_tmp->nb;
+			if (i == j)
+				return (EXIT_FAILURE);
+		}
+		stack_a = stack_a->next;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	check_digit(char **str, t_data *data)
 {
 	int	i;
@@ -56,22 +78,27 @@ int	check_digit(char **str, t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-void	into_stack(char **str, t_data *data)
+int	into_stack(char **str, t_data *data)
 {
 	int		i;
 	t_stack	*new_link;
+	long	nb;
 
 	i = 0;
 	(void)data;
 	while (str[i])
 	{
+		nb = ft_atol(str[i]);
+		if (nb < INT_MIN || nb > INT_MAX)
+			return (EXIT_FAILURE);
 		new_link = ft_stacknew(ft_atoi(str[i]));
 		if (!new_link)
-			exit_free(data);
+			return (EXIT_FAILURE);
 		ft_stackadd_back(&data->top_stack_a, new_link);
 		data->stack_a_size++;
 		i++;
 	}
+	return (EXIT_SUCCESS);
 }
 
 void	parse_args(char *argv[], t_data *data)
@@ -83,13 +110,15 @@ void	parse_args(char *argv[], t_data *data)
 	while (argv[i])
 	{
 		args = ft_split_whitespaces(argv[i]);
-		if (check_digit(args, data) == EXIT_FAILURE)
+		if (check_digit(args, data) == EXIT_FAILURE || into_stack(args, data)
+			== EXIT_FAILURE)
 		{
 			free_array(args);
 			exit_free(data);
 		}
-		into_stack(args, data);
 		free_array(args);
 		i++;
 	}
+	if (check_duplicate(data->top_stack_a) == EXIT_FAILURE)
+		exit_free(data);
 }
