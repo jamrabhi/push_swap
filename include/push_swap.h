@@ -41,8 +41,16 @@ t_stack	*ft_stacknew(int nb);
 void	ft_stackadd_front(t_stack **astack, t_stack *new);
 void	ft_stackadd_back(t_stack **astack, t_stack *new);
 void	ft_stackiter(t_stack *stack, void (*f)(int));
-void	ft_stackdelone(t_stack *stack, void (*del)(int));
+void	ft_stackdelone(t_stack *stack);
 void	free_stack(t_stack **astack);
 void	exit_free(t_data *data);
+
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+
+void	pa(t_data *data);
+void	pb(t_data *data);
+
 
 #endif

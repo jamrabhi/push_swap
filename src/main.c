@@ -19,6 +19,18 @@ void	print_list_elt(int nb)
 	printf("%d\n", nb);
 }
 
+void	print_stack_a(t_data *data)
+{
+	printf("STACK A :\n---------\n");
+	ft_stackiter(data->top_stack_a, &print_list_elt);
+}
+
+void	print_stack_b(t_data *data)
+{
+	printf("STACK B :\n---------\n");
+	ft_stackiter(data->top_stack_b, &print_list_elt);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -29,7 +41,15 @@ int	main(int argc, char *argv[])
 	parse_args(argv, &data);
 	if (data.stack_a_size < 2)
 		exit_free(&data);
-	ft_stackiter(data.top_stack_a, &print_list_elt);
+	print_stack_a(&data);
+	print_stack_b(&data);
+	pb(&data);
+	print_stack_a(&data);
+	print_stack_b(&data);
+	pa(&data);
+	print_stack_a(&data);
+	print_stack_b(&data);
 	free_stack(&data.top_stack_a);
+	free_stack(&data.top_stack_b);
 	return (0);
 }

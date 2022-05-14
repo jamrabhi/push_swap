@@ -59,12 +59,3 @@ void	ft_stackiter(t_stack *stack, void (*f)(int))
 		}
 	}
 }
-
-void	ft_stackdelone(t_stack *stack, void (*del)(int))
-{
-	if (stack && del)
-	{
-		del(stack->nb);
-		free(stack);
-	}
-}

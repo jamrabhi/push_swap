@@ -15,6 +15,7 @@
 void	exit_free(t_data *data)
 {
 	free_stack(&data->top_stack_a);
+	free_stack(&data->top_stack_b);
 	exit_error();
 }
 
