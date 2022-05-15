@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
-// A SUPPRIMER !
-#include <stdio.h>
 
 void	show_array(char **str)
 {

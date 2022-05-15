@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <stdio.h>
-#include <limits.h>
 
 void	print_list_elt(int nb)
 {
@@ -35,19 +33,20 @@ void	print_stack_b(t_data *data)
 
 void	print_stack_a_b(t_stack *stack, t_stack *stack2)
 {
-	printf("STACK A :\tSTACK B :\n---------\t---------\n");
+	printf("A B\n");
+	printf("- -\n");
 	while (stack || stack2)
 	{
 		if (stack)
 		{
-			printf("\t%d\t\t", stack->nb);
+			printf("%d ", stack->nb);
 		}
 		if (stack2)
 		{
 			if (stack)
-				printf("\t%d", stack2->nb);
+				printf("%d", stack2->nb);
 			else
-				printf("\t\t\t\t%d", stack2->nb);
+				printf("  %d", stack2->nb);
 		}
 		if (stack)
 			stack = stack->next;
@@ -55,7 +54,7 @@ void	print_stack_a_b(t_stack *stack, t_stack *stack2)
 			stack2 = stack2->next;
 		printf("\n");
 	}
-	printf(".....................\n\n");
+	printf("...\n\n");
 }
 
 int	main(int argc, char *argv[])
@@ -68,10 +67,13 @@ int	main(int argc, char *argv[])
 	parse_args(argv, &data);
 	if (data.stack_a_size < 2)
 		exit_free(&data);
+
 	print_stack_a_b(data.top_stack_a, data.top_stack_b);
-	sa(&data, 1);
+	pb(&data);
 	print_stack_a_b(data.top_stack_a, data.top_stack_b);
-	print_stack_a_b(data.top_stack_a, data.top_stack_b);
+	
+	sort(&data);
+	printf("FAILURE\n");
 	free_stack(&data.top_stack_a);
 	free_stack(&data.top_stack_b);
 	return (0);
