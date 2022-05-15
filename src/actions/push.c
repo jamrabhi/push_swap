@@ -16,8 +16,8 @@
 void	pa(t_data *data)
 {
 	t_stack	*stack_b;
-	t_stack *tmp;
-	t_stack *stack_a;
+	t_stack	*tmp;
+	t_stack	*stack_a;
 
 	if (data->stack_b_size > 0)
 	{
@@ -41,8 +41,8 @@ void	pa(t_data *data)
 void	pb(t_data *data)
 {
 	t_stack	*stack_a;
-	t_stack *tmp;
-	t_stack *stack_b;
+	t_stack	*tmp;
+	t_stack	*stack_b;
 
 	if (data->stack_a_size > 0)
 	{

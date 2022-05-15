@@ -16,8 +16,8 @@ CC = gcc
 
 CFLAGS = -g -Wall -Wextra -Werror
 
-SRC = src/main.c src/parsing/parse_args.c src/parsing/exit.c \
-		src/parsing/ft_split_whitespaces.c src/parsing/stack_utils.c \
+SRC = src/main.c src/parsing/parse_args.c src/utils/exit.c \
+		src/parsing/ft_split_whitespaces.c src/utils/stack_utils.c \
 		src/actions/swap.c src/actions/push.c src/actions/rotate.c \
 		src/actions/rev_rotate.c
 

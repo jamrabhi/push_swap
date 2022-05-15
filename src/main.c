@@ -33,6 +33,31 @@ void	print_stack_b(t_data *data)
 	printf("\n");
 }
 
+void	print_stack_a_b(t_stack *stack, t_stack *stack2)
+{
+	printf("STACK A :\tSTACK B :\n---------\t---------\n");
+	while (stack || stack2)
+	{
+		if (stack)
+		{
+			printf("\t%d\t\t", stack->nb);
+		}
+		if (stack2)
+		{
+			if (stack)
+				printf("\t%d", stack2->nb);
+			else
+				printf("\t\t\t\t%d", stack2->nb);
+		}
+		if (stack)
+			stack = stack->next;
+		if (stack2)
+			stack2 = stack2->next;
+		printf("\n");
+	}
+	printf(".....................\n\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -43,18 +68,10 @@ int	main(int argc, char *argv[])
 	parse_args(argv, &data);
 	if (data.stack_a_size < 2)
 		exit_free(&data);
-	print_stack_a(&data);
-	print_stack_b(&data);
-	rra(&data, 1);
-	print_stack_a(&data);
-	print_stack_b(&data);
-	rb(&data, 1);
-	print_stack_a(&data);
-	print_stack_b(&data);
-	ra(&data, 1);
-	rb(&data, 1);
-	print_stack_a(&data);
-	print_stack_b(&data);
+	print_stack_a_b(data.top_stack_a, data.top_stack_b);
+	sa(&data, 1);
+	print_stack_a_b(data.top_stack_a, data.top_stack_b);
+	print_stack_a_b(data.top_stack_a, data.top_stack_b);
 	free_stack(&data.top_stack_a);
 	free_stack(&data.top_stack_b);
 	return (0);
