@@ -65,16 +65,15 @@ int	main(int argc, char *argv[])
 		return (0);
 	ft_bzero(&data, sizeof(data));
 	parse_args(argv, &data);
-	if (data.stack_a_size < 2)
-		exit_free(&data);
-
-	print_stack_a_b(data.top_stack_a, data.top_stack_b);
-	pb(&data);
-	print_stack_a_b(data.top_stack_a, data.top_stack_b);
-	
+	if (data.stack_a_size == 1)
+		exit_success(&data);
+	// print_stack_a_b(data.top_stack_a, data.top_stack_b);
 	sort(&data);
-	printf("FAILURE\n");
-	free_stack(&data.top_stack_a);
-	free_stack(&data.top_stack_b);
+	// print_stack_a_b(data.top_stack_a, data.top_stack_b);
+
+	if (is_sorted(&data) == EXIT_SUCCESS)
+		exit_success(&data);
+	else
+		exit_free(&data);
 	return (0);
 }

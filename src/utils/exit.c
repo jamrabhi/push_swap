@@ -14,7 +14,7 @@
 
 void	exit_success(t_data *data)
 {
-	printf("SUCCESS\n");
+	// printf("SUCCESS\n");
 	free_stack(&data->top_stack_a);
 	free_stack(&data->top_stack_b);
 	exit(EXIT_SUCCESS);

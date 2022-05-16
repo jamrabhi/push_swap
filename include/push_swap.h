@@ -70,5 +70,9 @@ void	rrb(t_data *data, int i);
 void	rrr(t_data *data);
 
 void	sort(t_data *data);
+int		is_sorted(t_data *data);
+
+void	print_stack_a_b(t_stack *stack, t_stack *stack2);
+
 
 #endif

@@ -12,14 +12,49 @@
 
 #include <push_swap.h>
 
-// void	case_three(t_data *data)
-// {
-// 	if (data->top_stack_a->nb)
-// }
+void	case_three(t_data *data)
+{
+	t_stack	*stack;
+	int		second;
+	int		third;
+
+	stack = data->top_stack_a;
+	second = stack->next->nb;
+	third = stack->next->next->nb;
+	if (stack->nb > second && second < third && stack->nb < third)
+		sa(data, 1);
+	else if (stack->nb > second && second > third && stack->nb > third)
+	{
+		sa(data, 1);
+		rra(data, 1);
+	}
+	else if (stack->nb > second && second < third && stack->nb > third)
+		ra(data, 1);
+	else if (stack->nb < second && second > third && stack->nb < third)
+	{
+		sa(data, 1);
+		ra(data, 1);
+	}
+	else if (stack->nb < second && second > third && stack->nb > third)
+		rra(data, 1);
+}
+
+void	case_five(t_data *data)
+{
+	// t_stack	*stack_a;
+
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	pb(data);
+	pb(data);
+	case_three(data);
+	pa(data);
+	// stack_a = data->top_stack_a;
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
+}
 
 void	find_min_a(t_data *data)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = data->top_stack_a;
 	data->stack_a_min = stack->nb;
@@ -32,7 +67,7 @@ void	find_min_a(t_data *data)
 	}
 }
 
-int		is_sorted(t_data *data)
+int	is_sorted(t_data *data)
 {
 	t_stack	*stack;
 	int		nb;
@@ -55,6 +90,8 @@ void	sort(t_data *data)
 	if (is_sorted(data) == EXIT_SUCCESS)
 		exit_success(data);
 	find_min_a(data);
-	// if (data->stack_a_size == 3)
-	// 	case_three(&data);
+	if (data->stack_a_size == 3)
+		case_three(data);
+	if (data->stack_a_size == 5)
+		case_five(data);
 }
