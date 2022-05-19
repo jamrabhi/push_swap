@@ -25,6 +25,7 @@
 typedef struct s_stack
 {
 	int				nb;
+	int				index;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -33,9 +34,11 @@ typedef struct s_data
 	t_stack	*top_stack_a;
 	int		stack_a_size;
 	int		stack_a_min;
+	int		stack_a_max;
 	t_stack	*top_stack_b;
 	int		stack_b_size;
 	int		stack_b_min;
+	int		stack_b_max;
 }				t_data;
 
 void	parse_args(char *argv[], t_data *data);
@@ -53,6 +56,8 @@ void	ft_stackadd_front(t_stack **astack, t_stack *new);
 void	ft_stackadd_back(t_stack **astack, t_stack *new);
 void	ft_stackiter(t_stack *stack, void (*f)(int));
 void	ft_stackdelone(t_stack *stack);
+t_stack	*ft_stacknew_index(int nb, int index);
+
 
 void	sa(t_data *data, int i);
 void	sb(t_data *data, int i);
@@ -73,6 +78,8 @@ void	sort(t_data *data);
 int		is_sorted(t_data *data);
 
 void	print_stack_a_b(t_stack *stack, t_stack *stack2);
+
+unsigned long long	dec_to_bin(int nb);
 
 
 #endif

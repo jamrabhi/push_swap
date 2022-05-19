@@ -18,6 +18,7 @@ void	pa(t_data *data)
 	t_stack	*tmp;
 	t_stack	*stack_a;
 
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	if (data->stack_b_size > 0)
 	{
 		stack_b = data->top_stack_b;
@@ -25,7 +26,7 @@ void	pa(t_data *data)
 			tmp = stack_b->next;
 		else
 			tmp = NULL;
-		stack_a = ft_stacknew(stack_b->nb);
+		stack_a = ft_stacknew_index(stack_b->nb, stack_b->index);
 		if (!stack_a)
 			exit_free(data);
 		ft_stackadd_front(&data->top_stack_a, stack_a);
@@ -35,6 +36,8 @@ void	pa(t_data *data)
 		data->stack_b_size--;
 		ft_putstr_fd("pa\n", 1);
 	}
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
+
 }
 
 void	pb(t_data *data)
@@ -43,6 +46,7 @@ void	pb(t_data *data)
 	t_stack	*tmp;
 	t_stack	*stack_b;
 
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	if (data->stack_a_size > 0)
 	{
 		stack_a = data->top_stack_a;
@@ -50,7 +54,7 @@ void	pb(t_data *data)
 			tmp = stack_a->next;
 		else
 			tmp = NULL;
-		stack_b = ft_stacknew(stack_a->nb);
+		stack_b = ft_stacknew_index(stack_a->nb, stack_a->index);
 		if (!stack_b)
 			exit_free(data);
 		ft_stackadd_front(&data->top_stack_b, stack_b);
@@ -60,4 +64,6 @@ void	pb(t_data *data)
 		data->stack_b_size++;
 		ft_putstr_fd("pb\n", 1);
 	}
+	print_stack_a_b(data->top_stack_a, data->top_stack_b);
+
 }

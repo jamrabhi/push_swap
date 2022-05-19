@@ -20,6 +20,20 @@ t_stack	*ft_stacknew(int nb)
 	if (!tmp)
 		return (NULL);
 	tmp->nb = nb;
+	tmp->index = 0;
+	tmp->next = NULL;
+	return (tmp);
+}
+
+t_stack	*ft_stacknew_index(int nb, int index)
+{
+	t_stack	*tmp;
+
+	tmp = malloc(sizeof(*tmp));
+	if (!tmp)
+		return (NULL);
+	tmp->nb = nb;
+	tmp->index = index;
 	tmp->next = NULL;
 	return (tmp);
 }

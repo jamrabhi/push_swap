@@ -33,20 +33,21 @@ void	print_stack_b(t_data *data)
 
 void	print_stack_a_b(t_stack *stack, t_stack *stack2)
 {
-	printf("A B\n");
-	printf("- -\n");
+	printf("     A\t\t     B\n");
+	printf("nb\tin\tnb\tin\n");
+	printf("--\t--\t--\t--\n");
 	while (stack || stack2)
 	{
 		if (stack)
 		{
-			printf("%d ", stack->nb);
+			printf("%d\t%d", stack->nb, stack->index);
 		}
 		if (stack2)
 		{
 			if (stack)
-				printf("%d", stack2->nb);
+				printf("\t%d\t%d", stack2->nb, stack2->index);
 			else
-				printf("  %d", stack2->nb);
+				printf("\t\t%d\t%d", stack2->nb, stack2->index);
 		}
 		if (stack)
 			stack = stack->next;
@@ -54,7 +55,7 @@ void	print_stack_a_b(t_stack *stack, t_stack *stack2)
 			stack2 = stack2->next;
 		printf("\n");
 	}
-	printf("...\n\n");
+	printf("............................\n\n");
 }
 
 int	main(int argc, char *argv[])

@@ -38,17 +38,20 @@ void	free_stack(t_stack **astack)
 	t_stack	*stack;
 	t_stack	*tmp;
 
-	stack = *astack;
-	while (stack)
+	if (astack)
 	{
-		if (stack->next)
-			tmp = stack->next;
-		else
-			tmp = NULL;
-		free(stack);
-		stack = tmp;
+		stack = *astack;
+		while (stack)
+		{
+			if (stack->next)
+				tmp = stack->next;
+			else
+				tmp = NULL;
+			free(stack);
+			stack = tmp;
+		}
+		*astack = NULL;
 	}
-	*astack = NULL;
 }
 
 void	free_array(char **str)
