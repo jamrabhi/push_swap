@@ -40,14 +40,14 @@ void	print_stack_a_b(t_stack *stack, t_stack *stack2)
 	{
 		if (stack)
 		{
-			printf("%d\t%d", stack->nb, stack->index);
+			printf("%d\t%llu", stack->nb, dec_to_bin(stack->index));
 		}
 		if (stack2)
 		{
 			if (stack)
-				printf("\t%d\t%d", stack2->nb, stack2->index);
+				printf("\t%d\t%llu", stack2->nb, dec_to_bin(stack2->index));
 			else
-				printf("\t\t%d\t%d", stack2->nb, stack2->index);
+				printf("\t\t%d\t%llu", stack2->nb, dec_to_bin(stack2->index));
 		}
 		if (stack)
 			stack = stack->next;
