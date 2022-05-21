@@ -39,9 +39,9 @@ $(NAME) :
 
 bonus:
 ifeq ("$(shell ls -R $(OBJ_BONUS) 2>/dev/null)","")
-	gcc -c -Wall -Wextra -Werror $(SRCS) $(SRCS_BONUS)
-	ar rc $(NAME) $(OBJ) $(OBJ_BONUS) 
-	ranlib $(NAME)
+	@gcc -c -Wall -Wextra -Werror $(SRCS) $(SRCS_BONUS)
+	@ar rc $(NAME) $(OBJ) $(OBJ_BONUS) 
+	@ranlib $(NAME)
 endif
 
 clean:
