@@ -68,9 +68,9 @@ int	main(int argc, char *argv[])
 	parse_args(argv, &data);
 	if (data.stack_a_size == 1)
 		exit_success(&data);
-	// print_stack_a_b(data.top_stack_a, data.top_stack_b);
+	// //print_stack_a_b(data.top_stack_a, data.top_stack_b);
 	sort(&data);
-	// print_stack_a_b(data.top_stack_a, data.top_stack_b);
+	// //print_stack_a_b(data.top_stack_a, data.top_stack_b);
 
 	if (is_sorted(&data) == EXIT_SUCCESS)
 		exit_success(&data);

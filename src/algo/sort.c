@@ -37,7 +37,7 @@ void	get_index(t_data *data)
 	t_stack	*stack_cpy;
 
 	stack = data->top_stack_a;
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	// // //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	while (stack)
 	{
 		i = 0;
@@ -51,9 +51,46 @@ void	get_index(t_data *data)
 		stack->index = i;
 		stack = stack->next;
 	}
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	// // //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 }
 
+void	push_min_to_b(t_data *data)
+{
+	t_stack	*stack;
+	int		i;
+
+	i = 0;
+	stack = data->top_stack_a;
+	while (stack->nb != data->stack_a_min && ++i)
+		stack = stack->next;
+	while (stack != NULL)
+	{
+		if (data->top_stack_a->nb == data->stack_a_min)
+		{
+			pb(data);
+			break ;
+		}
+		else
+		{
+			while (data->top_stack_a->nb != data->stack_a_min)
+			{
+				if (i > 2)
+					rra(data, 1);
+				else
+					ra(data, 1);
+			}
+		}
+	}
+}
+
+void	case_five(t_data *data)
+{
+	push_min_to_b(data);
+	push_min_to_b(data);
+	case_three(data);
+	pa(data);
+	pa(data);
+}
 
 void	sort_radix(t_data *data)
 {
@@ -69,7 +106,7 @@ void	sort_radix(t_data *data)
 	while (((data->stack_a_size -1) >> max_bits) != 0)
 		++max_bits;
 	// printf("array_size = %d max_bits = %d\n", data->stack_a_size, max_bits);
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	// // //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	while (i < max_bits)
 	{
 		j = 0;
@@ -131,21 +168,6 @@ void	find_min_a(t_data *data)
 	}
 }
 
-void	find_max_a(t_data *data)
-{
-	t_stack	*stack;
-
-	stack = data->top_stack_a;
-	data->stack_a_max = stack->nb;
-	stack = stack->next;
-	while (stack)
-	{
-		if (stack->nb > data->stack_a_max)
-				data->stack_a_max = stack->nb;
-		stack = stack->next;
-	}
-}
-
 int	is_sorted(t_data *data)
 {
 	t_stack	*stack;
@@ -171,13 +193,12 @@ void	sort(t_data *data)
 	find_min_a(data);
 	find_max_a(data);
 	get_index(data);
-	// int dec = 1000000;
-	// printf("dec %d bin %llu\n", dec, dec_to_bin(dec));
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	if (data->stack_a_size == 3)
 		case_three(data);
+	else if (data->stack_a_size == 5)
+		case_five(data);
 	else
 		sort_radix(data);
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	//print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	
 }

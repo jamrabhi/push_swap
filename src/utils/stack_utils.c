@@ -62,6 +62,24 @@ void	ft_stackadd_back(t_stack **astack, t_stack *new)
 	}
 }
 
+void	find_max_a(t_data *data)
+{
+	t_stack	*stack;
+
+	stack = data->top_stack_a;
+	if (stack)
+	{
+		data->stack_a_max = stack->nb;
+		stack = stack->next;
+		while (stack)
+		{
+			if (stack->nb > data->stack_a_max)
+					data->stack_a_max = stack->nb;
+			stack = stack->next;
+		}
+	}
+}
+
 void	ft_stackiter(t_stack *stack, void (*f)(int))
 {
 	if (stack && f)
@@ -71,20 +89,5 @@ void	ft_stackiter(t_stack *stack, void (*f)(int))
 			f(stack->nb);
 			stack = stack->next;
 		}
-	}
-}
-
-void	ft_stackdelone(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	if (stack)
-	{
-		if (stack->next)
-			tmp = stack->next;
-		else
-			tmp = NULL;
-		free(stack);
-		stack = tmp;
 	}
 }

@@ -18,7 +18,7 @@ void	pa(t_data *data)
 	t_stack	*tmp;
 	t_stack	*stack_a;
 
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+	// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	if (data->stack_b_size > 0)
 	{
 		stack_b = data->top_stack_b;
@@ -34,9 +34,11 @@ void	pa(t_data *data)
 		data->top_stack_b = tmp;
 		data->stack_a_size++;
 		data->stack_b_size--;
+		find_max_a(data);
+		find_min_a(data);
 		ft_putstr_fd("pa\n", 1);
 	}
-	// // print_stack_a_b(data->top_stack_a, data->top_stack_b);
+		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 
 }
 
@@ -46,7 +48,8 @@ void	pb(t_data *data)
 	t_stack	*tmp;
 	t_stack	*stack_b;
 
-	// print_stack_a_b(data->top_stack_a, data->top_stack_b);
+		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
+
 	if (data->stack_a_size > 0)
 	{
 		stack_a = data->top_stack_a;
@@ -62,8 +65,10 @@ void	pb(t_data *data)
 		data->top_stack_a = tmp;
 		data->stack_a_size--;
 		data->stack_b_size++;
+		find_max_a(data);
+		find_min_a(data);
 		ft_putstr_fd("pb\n", 1);
 	}
-	// print_stack_a_b(data->top_stack_a, data->top_stack_b);
+		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 
 }

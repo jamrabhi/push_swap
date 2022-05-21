@@ -41,6 +41,9 @@ typedef struct s_data
 	int		stack_b_max;
 }				t_data;
 
+// A SUPPRIMER !!
+void	ft_stackiter(t_stack *stack, void (*f)(int));
+
 void	parse_args(char *argv[], t_data *data);
 char	**ft_split_whitespaces(char *s);
 
@@ -50,13 +53,12 @@ void	exit_free(t_data *data);
 void	free_stack(t_stack **astack);
 void	exit_success(t_data *data);
 
-
 t_stack	*ft_stacknew(int nb);
+t_stack	*ft_stacknew_index(int nb, int index);
 void	ft_stackadd_front(t_stack **astack, t_stack *new);
 void	ft_stackadd_back(t_stack **astack, t_stack *new);
-void	ft_stackiter(t_stack *stack, void (*f)(int));
-void	ft_stackdelone(t_stack *stack);
-t_stack	*ft_stacknew_index(int nb, int index);
+void	find_max_a(t_data *data);
+void	find_min_a(t_data *data);
 
 
 void	sa(t_data *data, int i);
@@ -76,6 +78,9 @@ void	rrr(t_data *data);
 
 void	sort(t_data *data);
 int		is_sorted(t_data *data);
+
+void	case_three(t_data *data);
+void	case_five(t_data *data);
 
 void	print_stack_a_b(t_stack *stack, t_stack *stack2);
 
