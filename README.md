@@ -3,8 +3,12 @@
 
 Algo used : radix sort for more than 5 numbers
 
-**Usage :**
+## Usage :
 ```bash
 $> make
 $> ./push_swap [list of numbers to sort]
 ```
+
+## Useful links :
+- https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
+- https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
