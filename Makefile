@@ -14,14 +14,15 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRC = src/main.c \
+SRC = 	src/main.c \
 		src/parsing/parse_args.c src/parsing/ft_split_whitespaces.c \
-		src/utils/exit.c src/utils/stack_utils.c \
-		src/actions/swap.c src/actions/push.c src/actions/rotate.c \
-			src/actions/rev_rotate.c \
-		src/algo/sort.c
+		src/utils/exit.c src/utils/stack_utils.c  src/utils/find_min_max.c \
+			src/utils/is_sorted.c src/utils/get_index.c \
+		src/moves/swap.c src/moves/push.c src/moves/rotate.c \
+			src/moves/rev_rotate.c \
+		src/sort/sort.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -67,5 +68,3 @@ fclean: clean
 	@echo "DONE"
 
 re: fclean all
-
-redebug: fclean debug

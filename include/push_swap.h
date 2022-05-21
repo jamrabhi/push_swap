@@ -16,9 +16,6 @@
 # include <libft.h>
 # include <unistd.h>
 
-//A SUPPRIMER !!
-# include <stdio.h>
-
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
@@ -41,9 +38,6 @@ typedef struct s_data
 	int		stack_b_max;
 }				t_data;
 
-// A SUPPRIMER !!
-void	ft_stackiter(t_stack *stack, void (*f)(int));
-
 void	parse_args(char *argv[], t_data *data);
 char	**ft_split_whitespaces(char *s);
 
@@ -57,9 +51,11 @@ t_stack	*ft_stacknew(int nb);
 t_stack	*ft_stacknew_index(int nb, int index);
 void	ft_stackadd_front(t_stack **astack, t_stack *new);
 void	ft_stackadd_back(t_stack **astack, t_stack *new);
+
 void	find_max_a(t_data *data);
 void	find_min_a(t_data *data);
 
+void	get_index(t_data *data);
 
 void	sa(t_data *data, int i);
 void	sb(t_data *data, int i);
@@ -81,10 +77,5 @@ int		is_sorted(t_data *data);
 
 void	case_three(t_data *data);
 void	case_five(t_data *data);
-
-void	print_stack_a_b(t_stack *stack, t_stack *stack2);
-
-unsigned long long	dec_to_bin(int nb);
-
 
 #endif

@@ -18,7 +18,6 @@ void	pa(t_data *data)
 	t_stack	*tmp;
 	t_stack	*stack_a;
 
-	// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 	if (data->stack_b_size > 0)
 	{
 		stack_b = data->top_stack_b;
@@ -38,8 +37,6 @@ void	pa(t_data *data)
 		find_min_a(data);
 		ft_putstr_fd("pa\n", 1);
 	}
-		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
-
 }
 
 void	pb(t_data *data)
@@ -47,8 +44,6 @@ void	pb(t_data *data)
 	t_stack	*stack_a;
 	t_stack	*tmp;
 	t_stack	*stack_b;
-
-		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
 
 	if (data->stack_a_size > 0)
 	{
@@ -69,6 +64,4 @@ void	pb(t_data *data)
 		find_min_a(data);
 		ft_putstr_fd("pb\n", 1);
 	}
-		// //print_stack_a_b(data->top_stack_a, data->top_stack_b);
-
 }

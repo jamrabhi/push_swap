@@ -12,19 +12,6 @@
 
 #include <push_swap.h>
 
-void	show_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		printf("str[%d] = '%s'\n", i, str[i]);
-		i++;
-	}
-	printf("\n");
-}
-
 int	check_duplicate(t_stack *stack_a)
 {
 	int		i;

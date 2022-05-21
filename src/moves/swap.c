@@ -31,8 +31,6 @@ void	sa(t_data *data, int i)
 		if (i == 1)
 			ft_putstr_fd("sa\n", 1);
 	}
-		//print_stack_a_b(data->top_stack_a, data->top_stack_b);
-
 }
 
 void	sb(t_data *data, int i)
@@ -54,8 +52,6 @@ void	sb(t_data *data, int i)
 		if (i == 1)
 			ft_putstr_fd("sb\n", 1);
 	}
-		//print_stack_a_b(data->top_stack_a, data->top_stack_b);
-
 }
 
 void	ss(t_data *data)

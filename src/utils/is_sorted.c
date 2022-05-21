@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamrabhi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 17:37:55 by jamrabhi          #+#    #+#             */
-/*   Updated: 2022/03/30 17:37:58 by jamrabhi         ###   ########.fr       */
+/*   Created: 2022/05/21 03:30:31 by jamrabhi          #+#    #+#             */
+/*   Updated: 2022/05/21 03:30:51 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int argc, char *argv[])
+int	is_sorted(t_data *data)
 {
-	t_data	data;
+	t_stack	*stack;
+	int		nb;
 
-	if (argc == 1)
-		return (0);
-	ft_bzero(&data, sizeof(data));
-	parse_args(argv, &data);
-	if (data.stack_a_size == 1)
-		exit_success(&data);
-	sort(&data);
-	if (is_sorted(&data) == EXIT_SUCCESS)
-		exit_success(&data);
-	else
-		exit_free(&data);
-	return (0);
+	stack = data->top_stack_a;
+	while (stack)
+	{
+		nb = stack->nb;
+		stack = stack->next;
+		if (stack && nb > stack->nb)
+			return (EXIT_FAILURE);
+	}
+	if (data->top_stack_b)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
